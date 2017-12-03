@@ -5,22 +5,26 @@
 </head>
 <body>
 
-<div id="Game">	
+	<h1>The Psychic Game</h1>
 	
-	<h1>Guess what letter I'm thinking of...?</h1>
+		<div id="Game">	
+	
+			<h2>
+				Guess what letter I'm thinking of...?
+				Type a letter to start the game!
+			</h2>
 
-	<h2>Wins:
-		<br>
-		Loses:
-	</h2>
+			<div></div>
 
-	</div>
+		</div>
 
+	
 	<button onclick="location.reload()">Play Again! </button>
 
 	<script type="text/javascript">
 		
-		
+	//stating variables
+
 		var win = 0;
 		var	lose = 0;
 
@@ -29,16 +33,22 @@
 
 		var userGuess = [];
 
-		for (var i = 0; i < 10; i++) {
+		var numberOfGuesses = 10
+
 	
 
+		//Runs through loop 10 times
+
+		for (var i = 0; i < 10; i++) {
+	
+			//function for 'key press' event
 			document.onkeyup = function(event) {
 
 				var myGuess = event.key	;
 
-
-
 				var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+			//defines correct and incorrect guesses
 
       		if ( myGuess == computerGuess) {
 
@@ -48,17 +58,22 @@
       		else {lose++;
       		}
 
+      	//Changes content of HTML page to display results
 
       	var html =
       	"<div>You chose: " + myGuess + "<div>" +
-      	"<div>The computer chose: " + computerGuess + "</div>"+
-      	"<h2> Wins:" + win + "</h2>" + "<h2>Loses:" + lose + "</h2>";
+      	"<h2> Correct Guesses:" + win + "</h2>" + "<h2>Wrong Guesses:" + lose + "</h2>"+
+		"<h2> Letters Guessed:" + userGuess + "</h2>"
+		"<h2> Guesses left:" + numberOfGuesses + "</h2>";
 
       	document.querySelector("#Game").innerHTML = html;
-      
+      	
+      	//Documents keyed input into empty array
+
      	userGuess.push(myGuess);
 
-  		 for (var j = 0; i < userGuess.length; i++) {
+  		//Ends Game
+  		for (var j = 0; i < userGuess.length; i++) {
       	 
       	 var html ="<div>GAME OVER</div>";
 
