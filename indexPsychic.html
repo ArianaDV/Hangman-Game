@@ -27,35 +27,49 @@
 
 		var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]	;
 
-		document.onkeyup = function(event) {
+		var userGuess = [];
 
-			var myGuess = event.key	;
+		for (var i = 0; i < 10; i++) {
+	
+
+			document.onkeyup = function(event) {
+
+				var myGuess = event.key	;
+
+
 
 				var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-		
-		console.log("User guess: " + myGuess);
 
-      // Alerts the Computer's guess.
-      	console.log("Computer guess: " + computerGuess);
-     	
+      		if ( myGuess == computerGuess) {
 
-      	if ( myGuess == computerGuess) {
+      				win++;
+      			}
 
-      		win++;}
-
-      	else {lose++;
-      	}
+      		else {lose++;
+      		}
 
 
       	var html =
-      	"<h1>You chose: " + myGuess + "</h1>" +
+      	"<div>You chose: " + myGuess + "<div>" +
       	"<div>The computer chose: " + computerGuess + "</div>"+
       	"<h2> Wins:" + win + "</h2>" + "<h2>Loses:" + lose + "</h2>";
 
       	document.querySelector("#Game").innerHTML = html;
+      
+     	userGuess.push(myGuess);
 
+  		 for (var j = 0; i < userGuess.length; i++) {
+      	 
+      	 var html ="<div>GAME OVER</div>";
 
+      	 document.querySelector("#Game").innerHTML = html;
       }
+
+  
+      }
+
+
+    }
 
 
 
