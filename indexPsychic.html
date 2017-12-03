@@ -4,16 +4,27 @@
 	<title>Psychic Game</title>
 </head>
 <body>
+
+<div id="Game">	
 	
 	<h1>Guess what letter I'm thinking of...?</h1>
 
-	<h2>Wins:</h2>
+	<h2>Wins:
+		<br>
+		Loses:
+	</h2>
 
-	<h2>Loses:</h2>
+	</div>
+
+	<button onclick="location.reload()">Play Again! </button>
 
 	<script type="text/javascript">
 		
 		
+		var win = 0;
+		var	lose = 0;
+
+
 		var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]	;
 
 		document.onkeyup = function(event) {
@@ -26,9 +37,25 @@
 
       // Alerts the Computer's guess.
       	console.log("Computer guess: " + computerGuess);
+     	
 
-		};
-		
+      	if ( myGuess == computerGuess) {
+
+      		win++;}
+
+      	else {lose++;
+      	}
+
+
+      	var html =
+      	"<h1>You chose: " + myGuess + "</h1>" +
+      	"<div>The computer chose: " + computerGuess + "</div>"+
+      	"<h2> Wins:" + win + "</h2>" + "<h2>Loses:" + lose + "</h2>";
+
+      	document.querySelector("#Game").innerHTML = html;
+
+
+      }
 
 
 
