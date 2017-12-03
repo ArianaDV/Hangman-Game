@@ -18,7 +18,6 @@
 
 		</div>
 
-	
 	<button onclick="location.reload()">Play Again! </button>
 
 	<script type="text/javascript">
@@ -35,11 +34,13 @@
 
 		var numberOfGuesses = 10
 
+		var guessesLeft = numberOfGuesses - 1;
+
 	
 
 		//Runs through loop 10 times
 
-		for (var i = 0; i < 10; i++) {
+		for (var i = 0; i < numberOfGuesses; i++) {
 	
 			//function for 'key press' event
 			document.onkeyup = function(event) {
@@ -56,15 +57,16 @@
       			}
 
       		else {lose++;
-      		}
+      			}
 
       	//Changes content of HTML page to display results
+
 
       	var html =
       	"<div>You chose: " + myGuess + "<div>" +
       	"<h2> Correct Guesses:" + win + "</h2>" + "<h2>Wrong Guesses:" + lose + "</h2>"+
-		"<h2> Letters Guessed:" + userGuess + "</h2>"
-		"<h2> Guesses left:" + numberOfGuesses + "</h2>";
+		"<h2> Letters Guessed:" + userGuess + "</h2>" +
+		"<h2> Guesses left:" + guessesLeft + "</h2>";
 
       	document.querySelector("#Game").innerHTML = html;
       	
@@ -72,19 +74,18 @@
 
      	userGuess.push(myGuess);
 
+     	guessesLeft -= 1;
+
   		//Ends Game
   		for (var j = 0; i < userGuess.length; i++) {
       	 
       	 var html ="<div>GAME OVER</div>";
 
       	 document.querySelector("#Game").innerHTML = html;
-      }
+      		}
 
-  
-      }
-
-
-    }
+  		}
+  	}
 
 
 
