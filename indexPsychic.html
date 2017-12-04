@@ -34,11 +34,14 @@
 
 		var numberOfGuesses = 10
 
-		var guessesLeft = numberOfGuesses - 1;
+		var guessesLeft = [9];
 
 	
-
+				
 		//Runs through loop 10 times
+
+	
+	
 
 		for (var i = 0; i < numberOfGuesses; i++) {
 	
@@ -49,43 +52,43 @@
 
 				var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+			
 			//defines correct and incorrect guesses
 
-      		if ( myGuess == computerGuess) {
+				if ( myGuess == computerGuess) {
 
       				win++;
-      			}
+      				      				
+    				}
 
-      		else {lose++;
-      			}
+      			else if ( myGuess !== computerGuess) {
+      			
+      				if (guessesLeft > 0) {
 
-      	//Changes content of HTML page to display results
+      				}
 
+      				else { lose++;
+      				}
+      			
+      	}
 
       	var html =
-      	"<div>You chose: " + myGuess + "<div>" +
-      	"<h2> Correct Guesses:" + win + "</h2>" + "<h2>Wrong Guesses:" + lose + "</h2>"+
-		"<h2> Letters Guessed:" + userGuess + "</h2>" +
-		"<h2> Guesses left:" + guessesLeft + "</h2>";
+      		"<div>You chose: " + myGuess + "<div>" +
+      		"<div> Wins:" + win + "</div>" + "<div>Loses:" + lose + "</div>"+
+			"<div> Attempts left:" + guessesLeft + "</div>" +
+			"<div> Letters Guessed:" + userGuess + "</div>"		;
 
-      	document.querySelector("#Game").innerHTML = html;
-      	
-      	//Documents keyed input into empty array
+      			document.querySelector("#Game").innerHTML = html;
+
 
      	userGuess.push(myGuess);
 
      	guessesLeft -= 1;
+     	console.log(guessesLeft);
 
-  		//Ends Game
-  		for (var j = 0; i < userGuess.length; i++) {
-      	 
-      	 var html ="<div>GAME OVER</div>";
-
-      	 document.querySelector("#Game").innerHTML = html;
-      		}
-
-  		}
-  	}
+      }
+  }
+ 		 	
 
 
 
