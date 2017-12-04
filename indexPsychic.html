@@ -36,6 +36,9 @@
 
 		var guessesLeft = [9];
 
+		var noGuessesleft = true;
+
+
 	
 				
 		//Runs through loop 10 times
@@ -58,6 +61,10 @@
 				if ( myGuess == computerGuess) {
 
       				win++;
+
+      				guessesLeft = 10;
+
+      				userGuess = [];
       				      				
     				}
 
@@ -69,6 +76,15 @@
 
       				else { lose++;
       				}
+
+      			if (guessesLeft==0) {
+
+      				true;
+
+      				guessesLeft = 10;
+
+      				userGuess = [];
+      			}
       			
       	}
 

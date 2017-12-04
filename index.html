@@ -7,27 +7,112 @@
 	
 	<h1>Let's Play Hangman!</h1>
 
-	<h2>Wins: </h2>
+	<div id="numOfTries">
+		
+		Number of tries
 
-	<h2>Loses:</h2>
+	</div>
+
+	<div id="hold">
+
+		Letters You have guessed:		
+
+	</div>
+
+	<div id="buttons">
+		
+	</div>
 
 	<script type="text/javascript">
-		
-		
+
+	window.onload = function (){
+
 		var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]	;
 
-		document.onkeyup = function(event) {
+		var options; //array of words available
 
-			var myGuess = event.key	;
+		var	geuss = [];
 
-				var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+		var attempts = document.getElementById('numOfTries');
+
+		//create letter buttons
+		var buttons = function() {
+
+			myButtons = document.getElementById('buttons');
+				letters = document.createElement('ul');
+
+			for (var i = 0; i < computerChoices.length; i++) {
+				letters.id = 'computerChoices';
+				list = document.createElement('li');
+				list.id = 'letter';
+				list.innerHTML =computerChoices[i];
+				check();
+				myButtons.appendchild(letters);
+				letters.appendchild(list);
+
+				}
+
+				console.log ("alphabet created");
+			}
+
+	//create guess list
+
+	result = function () {
+		wordHolder = document.getElementById('hold');
+    
+    	correct = document.createElement('ul');
+
+    	for (var i = 0; i < word.length; i++) {
+      	correct.setAttribute('id', 'my-word');
+      	guess = document.createElement('li');
+      	guess.setAttribute('class', 'guess');
+      		if (word[i] === "-") {
+        	guess.innerHTML = "-";
+        	space = 1;
+      		} else {
+        	guess.innerHTML = "_";
+      		}
+
+      		guesses.push(guess);
+      		wordHolder.appendChild(correct);
+		    correct.appendChild(guess);
+    	}
+  	}
+  
+  // Show lives
+   comments = function () {
+    showLives.innerHTML = "You have " + lives + " lives";
+    if (lives < 1) {
+      showLives.innerHTML = "Game Over";
+    }
+    for (var i = 0; i < geusses.length; i++) {
+      if (counter + space === geusses.length) {
+        showLives.innerHTML = "You Win!";
+      }
+    }
+  }
+
+
+}
+	
 		
-		console.log("User guess: " + myGuess);
 
-      // Alerts the Computer's guess.
-      	console.log("Computer guess: " + computerGuess);
 
-		};
+
+		// document.onkeyup = function(event) {
+
+		// 	var myGuess = event.key	;
+
+		// 		var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+		
+		// console.log("User guess: " + myGuess);
+
+  //     // Alerts the Computer's guess.
+  //     	console.log("Computer guess: " + computerGuess);
+
+  //     }
+
+		// };
 		
 
 
